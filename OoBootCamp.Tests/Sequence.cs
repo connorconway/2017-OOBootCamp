@@ -6,9 +6,10 @@
 
 using System.Collections.Generic;
 using System.Linq;
+
 // ReSharper disable PossibleMultipleEnumeration
 
-namespace OoBootCamp
+namespace OoBootCamp.Tests
 {
     public static class Sequence
     {
@@ -17,12 +18,5 @@ namespace OoBootCamp
             return elements.Aggregate(elements.First(),
                 (champion, challenger) => challenger.IsBetterThan(champion) ? challenger : champion);
         }
-    }
-
-    // Understands rules to be ordered elements
-    // ReSharper disable once InconsistentNaming
-    public interface Sequenceable<in T>
-    {
-        bool IsBetterThan(T other);
     }
 }

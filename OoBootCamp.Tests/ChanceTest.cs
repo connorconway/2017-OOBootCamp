@@ -4,7 +4,7 @@
  */
 
 using NUnit.Framework;
-using ExtensionMethods;
+using OoBootCamp.Chance;
 
 namespace OoBootCamp.Tests
 {
@@ -12,16 +12,16 @@ namespace OoBootCamp.Tests
     [TestFixture]
     public class ChanceTest
     {
-        private static readonly Chance Impossible = new Chance(0.0);
-        private static readonly Chance Unlikely = 0.25.Chance();
-        private static readonly Chance EquallyLikely = 0.5.Chance();
-        private static readonly Chance Likely = 0.75.Chance();
-        private static readonly Chance Certain = 1.Chance();
+        private static readonly Chance.Chance Impossible = new Chance.Chance(0.0);
+        private static readonly Chance.Chance Unlikely = 0.25.Chance();
+        private static readonly Chance.Chance EquallyLikely = 0.5.Chance();
+        private static readonly Chance.Chance Likely = 0.75.Chance();
+        private static readonly Chance.Chance Certain = 1.Chance();
 
         [Test]
         public void Equality()
         {
-            Assert.AreEqual(new Chance(0.75), Likely);
+            Assert.AreEqual(new Chance.Chance(0.75), Likely);
             Assert.AreEqual(0.75.Chance(), 0.75.Chance());
             Assert.AreNotEqual(Likely, new object());
             Assert.AreNotEqual(Likely, null);
@@ -30,7 +30,7 @@ namespace OoBootCamp.Tests
         [Test]
         public void Hash()
         {
-            Assert.AreEqual(new Chance(0.75).GetHashCode(), Likely.GetHashCode());
+            Assert.AreEqual(new Chance.Chance(0.75).GetHashCode(), Likely.GetHashCode());
         }
 
         [Test]
@@ -47,7 +47,7 @@ namespace OoBootCamp.Tests
         public void And()
         {
             Assert.AreEqual(Unlikely, EquallyLikely & EquallyLikely);
-            Assert.AreEqual(new Chance(0.1875), Likely & Unlikely);
+            Assert.AreEqual(new Chance.Chance(0.1875), Likely & Unlikely);
             Assert.AreEqual(Unlikely.And(Likely), Likely & Unlikely);
             Assert.AreEqual(Likely, Likely & Certain);
             Assert.AreEqual(Impossible, Impossible & Likely);
@@ -57,7 +57,7 @@ namespace OoBootCamp.Tests
         public void Or()
         {
             Assert.AreEqual(Likely, EquallyLikely | EquallyLikely);
-            Assert.AreEqual(new Chance(0.8125), Likely | Unlikely);
+            Assert.AreEqual(new Chance.Chance(0.8125), Likely | Unlikely);
             Assert.AreEqual(Unlikely.Or(Likely), Likely | Unlikely);
             Assert.AreEqual(Certain, Likely | Certain);
             Assert.AreEqual(Likely, Impossible | Likely);
@@ -66,8 +66,8 @@ namespace OoBootCamp.Tests
         [Test]
         public void ValidFractions()
         {
-            Assert.That(() => new Chance(1.1), Throws.ArgumentException);
-            Assert.That(() => new Chance(-0.1), Throws.ArgumentException);
+            Assert.That(() => new Chance.Chance(1.1), Throws.ArgumentException);
+            Assert.That(() => new Chance.Chance(-0.1), Throws.ArgumentException);
         }
 
     }

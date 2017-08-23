@@ -40,16 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Chance.cs" />
+    <Compile Include="Chance\Chance.cs" />
+    <Compile Include="Chance\ChanceConstructors.cs" />
     <Compile Include="Graph\Link.cs" />
     <Compile Include="Graph\Node.cs" />
     <Compile Include="Graph\Path.cs" />
     <Compile Include="Quantities\IntervalQuantity.cs" />
+    <Compile Include="Quantities\QuantityConstructors.cs" />
     <Compile Include="Quantities\RatioQuantity.cs" />
     <Compile Include="Quantities\Unit.cs" />
     <Compile Include="Rectangle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sequence.cs" />
+    <Compile Include="Sequenceable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,7 +4,6 @@
  */
 
 using System;
-using static OoBootCamp.Quantities.Unit;
 
 namespace OoBootCamp.Quantities
 {
@@ -28,7 +27,7 @@ namespace OoBootCamp.Quantities
         public static readonly IntervalUnit Celsius = new IntervalUnit();
         public static readonly IntervalUnit Fahrenheit = new IntervalUnit(5/9.0, 32, Celsius);
 
-        private static readonly int DecimalPlaceCount = 6;
+        private const int DecimalPlaceCount = 6;
         private readonly double _baseUnitRatio;
         private readonly double _offset;
         private readonly Unit _baseUnit;
@@ -78,43 +77,6 @@ namespace OoBootCamp.Quantities
             public IntervalQuantity S(double amount) => new IntervalQuantity(amount, this);
 
             public IntervalQuantity Es(double amount) => this.S(amount);
-        }
-    }
-
-    namespace ExtensionMethods
-    {
-        public static class QuantityConstructors
-        {
-            public static RatioQuantity Teaspoons(this double amount) => Teaspoon.S(amount);
-            public static RatioQuantity Teaspoons(this int amount) => Teaspoon.S(amount);
-            public static RatioQuantity Tablespoons(this double amount) => Tablespoon.S(amount);
-            public static RatioQuantity Tablespoons(this int amount) => Tablespoon.S(amount);
-            public static RatioQuantity Ounces(this double amount) => Ounce.S(amount);
-            public static RatioQuantity Ounces(this int amount) => Ounce.S(amount);
-            public static RatioQuantity Cups(this double amount) => Cup.S(amount);
-            public static RatioQuantity Cups(this int amount) => Cup.S(amount);
-            public static RatioQuantity Pints(this double amount) => Pint.S(amount);
-            public static RatioQuantity Pints(this int amount) => Pint.S(amount);
-            public static RatioQuantity Quarts(this double amount) => Quart.S(amount);
-            public static RatioQuantity Quarts(this int amount) => Quart.S(amount);
-            public static RatioQuantity Gallons(this double amount) => Gallon.S(amount);
-            public static RatioQuantity Gallons(this int amount) => Gallon.S(amount);
-
-            public static RatioQuantity Inches(this double amount) => Inch.S(amount);
-            public static RatioQuantity Inches(this int amount) => Inch.S(amount);
-            public static RatioQuantity Feet(this double amount) => Foot.S(amount);
-            public static RatioQuantity Feet(this int amount) => Foot.S(amount);
-            public static RatioQuantity Yards(this double amount) => Yard.S(amount);
-            public static RatioQuantity Yards(this int amount) => Yard.S(amount);
-            public static RatioQuantity Furlongs(this double amount) => Furlong.S(amount);
-            public static RatioQuantity Furlongs(this int amount) => Furlong.S(amount);
-            public static RatioQuantity Miles(this double amount) => Mile.S(amount);
-            public static RatioQuantity Miles(this int amount) => Mile.S(amount);
-
-            public static IntervalQuantity Celsius(this double amount) => Unit.Celsius.Es(amount);
-            public static IntervalQuantity Celsius(this int amount) => Unit.Celsius.Es(amount);
-            public static IntervalQuantity Fahrenheit(this double amount) => Unit.Fahrenheit.S(amount);
-            public static IntervalQuantity Fahrenheit(this int amount) => Unit.Fahrenheit.S(amount);
         }
     }
 }

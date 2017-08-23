@@ -10,22 +10,16 @@ namespace OoBootCamp.Graph
     // Understands a specific route from one Node to another Node
     public class Path
     {
-        public static IComparer<Path> LeastCost =
+        public static readonly IComparer<Path> LeastCost =
             Comparer<Path>.Create((left, right) => left.Cost().CompareTo(right.Cost()));
-        public static IComparer<Path> FewestHops =
+        public static readonly IComparer<Path> FewestHops =
             Comparer<Path>.Create((left, right) => left.HopCount().CompareTo(right.HopCount()));
 
         private readonly List<Link> _links = new List<Link>();
 
-        public int HopCount()
-        {
-            return _links.Count;
-        }
+        public int HopCount() => _links.Count;
 
-        public double Cost()
-        {
-            return Link.TotalCost(_links);
-        }
+        public double Cost() => Link.TotalCost(_links);
 
         internal Path Prepend(Link link)
         {

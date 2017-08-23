@@ -4,7 +4,7 @@
  */
 
 using NUnit.Framework;
-using OoBootCamp.Quantities.ExtensionMethods;
+using OoBootCamp.Quantities;
 using static OoBootCamp.Quantities.Unit;
 
 namespace OoBootCamp.Tests.Quantities

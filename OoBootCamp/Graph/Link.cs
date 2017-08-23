@@ -20,7 +20,7 @@ namespace OoBootCamp.Graph
             _cost = cost;
         }
 
-        internal List<Path> Paths(Node destination, List<Node> visitedNodes)
+        internal IList<Path> Paths(Node destination, List<Node> visitedNodes)
         {
             return _target
                 .Paths(destination, visitedNodes)
@@ -28,9 +28,7 @@ namespace OoBootCamp.Graph
                 .ToList();
         }
 
-        public static double TotalCost(List<Link> links)
-        {
-            return links.Sum(link => link._cost);
-        }
+        public static double TotalCost(List<Link> links) => links.Sum(link => link._cost);
+
     }
 }

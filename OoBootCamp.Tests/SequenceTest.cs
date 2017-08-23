@@ -31,11 +31,11 @@ namespace OoBootCamp.Tests
         [Test]
         public void Chance()
         {
-            Chance[] chances =
+            Chance.Chance[] chances =
             {
-                new Chance(0.50), new Chance(0.25), new Chance(0.75), new Chance(0.1)
+                new Chance.Chance(0.50), new Chance.Chance(0.25), new Chance.Chance(0.75), new Chance.Chance(0.1)
             };
-            Assert.AreEqual(new Chance(0.75), Sequence.Best(chances));
+            Assert.AreEqual(new Chance.Chance(0.75), Sequence.Best(chances));
         }
 
         [Test]

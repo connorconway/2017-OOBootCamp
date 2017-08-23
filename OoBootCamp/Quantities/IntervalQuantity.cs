@@ -10,9 +10,9 @@ namespace OoBootCamp.Quantities
     // Understands a specific scale-based measurement
     public class IntervalQuantity : IEquatable<IntervalQuantity>, Sequenceable<IntervalQuantity>
     {
-        private static readonly double Tolerance = 1e-6;
-        protected internal readonly double Amount;
-        protected internal readonly Unit Unit;
+        private const double Tolerance = 1e-6;
+        protected readonly double Amount;
+        protected readonly Unit Unit;
 
         internal IntervalQuantity(double amount, Unit unit)
         {
@@ -30,8 +30,7 @@ namespace OoBootCamp.Quantities
 
         private bool IsCompatible(IntervalQuantity other) => this.Unit.IsCompatible(other.Unit);
 
-        protected internal double ConvertedAmount(IntervalQuantity other) 
-            => this.Unit.ConvertedAmount(other.Amount, other.Unit);
+        protected double ConvertedAmount(IntervalQuantity other) => this.Unit.ConvertedAmount(other.Amount, other.Unit);
 
         public bool IsBetterThan(IntervalQuantity other)
         {

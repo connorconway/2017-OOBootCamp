@@ -4,9 +4,8 @@
  */
 
 using System;
-using OoBootCamp;
 
-namespace OoBootCamp
+namespace OoBootCamp.Chance
 {
     // Understands the likelihood of something occurring
     public class Chance : IEquatable<Chance>, Sequenceable<Chance>
@@ -14,7 +13,6 @@ namespace OoBootCamp
         private const double CertainFraction = 1.0;
         private const double Tolerance = 1e-6;
         private readonly double _fraction;
-
 
         public Chance(double likelihoodAsFraction)
         {
@@ -29,10 +27,7 @@ namespace OoBootCamp
             return Math.Abs(this._fraction - other._fraction) < Tolerance;
         }
 
-        public bool IsBetterThan(Chance other)
-        {
-            return this._fraction > other._fraction;
-        }
+        public bool IsBetterThan(Chance other) => this._fraction > other._fraction;
 
         public override bool Equals(object other)
         {
@@ -41,10 +36,7 @@ namespace OoBootCamp
             return other.GetType() == this.GetType() && Equals((Chance) other);
         }
 
-        public override int GetHashCode()
-        {
-            return Math.Round(_fraction, 6).GetHashCode();
-        }
+        public override int GetHashCode() => Math.Round(_fraction, 6).GetHashCode();
 
         public static Chance operator !(Chance c) => new Chance(CertainFraction - c._fraction);
 
@@ -58,15 +50,5 @@ namespace OoBootCamp
         public static Chance operator |(Chance left, Chance right) => !(!left & !right);
 
         public Chance Or(Chance other) => this | other;
-    }
-}
-
-namespace ExtensionMethods
-{
-    public static class ChanceConstructors
-    {
-        public static Chance Chance(this double fraction) => new Chance(fraction);
-
-        public static Chance Chance(this int wholeNumber) => new Chance(wholeNumber);
     }
 }

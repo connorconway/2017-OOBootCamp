@@ -21,30 +21,15 @@ namespace OoBootCamp.Graph
             return neighbour;
         }
 
-        public bool CanReach(Node destination)
-        {
-            return Paths(destination).Any();
-        }
+        public bool CanReach(Node destination) => Paths(destination).Any();
 
-        public int HopCount(Node destination)
-        {
-            return Path(destination, FewestHops).HopCount();
-        }
+        public int HopCount(Node destination) => Path(destination, FewestHops).HopCount();
 
-        public double Cost(Node destination)
-        {
-            return Path(destination).Cost();
-        }
+        public double Cost(Node destination) => Path(destination).Cost();
 
-        public Path Path(Node destination)
-        {
-            return Path(destination, LeastCost);
-        }
+        public Path Path(Node destination) => Path(destination, LeastCost);
 
-        public List<Path> Paths(Node destination)
-        {
-            return Paths(destination, NoVisitedNodes());
-        }
+        public List<Path> Paths(Node destination) => Paths(destination, NoVisitedNodes());
 
         internal List<Path> Paths(Node destination, IList<Node> visitedNodes)
         {
@@ -63,15 +48,9 @@ namespace OoBootCamp.Graph
             return results.First();
         }
 
-        private IList<Node> NoVisitedNodes()
-        {
-            return new List<Node>();
-        }
+        private static IList<Node> NoVisitedNodes() => new List<Node>();
 
-        private List<Node> CopyWithThis(IList<Node> originalNodes)
-        {
-            return new List<Node>(originalNodes) {this};
-        }
+        private List<Node> CopyWithThis(IList<Node> originalNodes) => new List<Node>(originalNodes){this};
 
     }
 }
